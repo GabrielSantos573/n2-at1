@@ -6,12 +6,10 @@ const App = () => {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
 
-  // Carrega as tarefas salvas ao abrir o app
   useEffect(() => {
     loadTasks();
   }, []);
 
-  // Função para carregar tarefas do AsyncStorage
   const loadTasks = async () => {
     try {
       const savedTasks = await AsyncStorage.getItem('tasks');
@@ -23,7 +21,6 @@ const App = () => {
     }
   };
 
-  // Função para salvar tarefas no AsyncStorage
   const saveTasks = async (tasks) => {
     try {
       await AsyncStorage.setItem('tasks', JSON.stringify(tasks));
@@ -32,7 +29,6 @@ const App = () => {
     }
   };
 
-  // Função para adicionar uma nova tarefa
   const addTask = () => {
     if (task.trim() === '') return;
 
